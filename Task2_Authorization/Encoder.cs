@@ -7,6 +7,7 @@ using System.Text.Json;
 
 namespace Task2_Authorization
 {
+    // запись состояния файловой системы с шифрованием
     static class Encoder
     {
         private static Random random = new();
@@ -26,6 +27,7 @@ namespace Task2_Authorization
             random2 += i * i;
         }
 
+        // метод кодирования состояния объекта
         public static byte[] EncodeObject<T>(T obj)
         {
             string json = JsonSerializer.Serialize(obj);
@@ -38,6 +40,7 @@ namespace Task2_Authorization
             return new byte[] { (byte)(seed >> 0), (byte)(seed >> 8), (byte)(seed >> 16), (byte)(seed >> 24) }.Concat(rawBytes).ToArray();
         }
 
+        // метод декодирования состояния объекта
         public static T DecodeObject<T>(byte[] bytes)
         {
             int n = bytes.Length - 4;

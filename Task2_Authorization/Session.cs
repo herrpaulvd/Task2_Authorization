@@ -8,12 +8,14 @@ namespace Task2_Authorization
 {
     using OuterFile = System.IO.File;
     using OuterFileInfo = System.IO.FileInfo;
+    // класс сессии пользователя
     class Session
     {
-        public int UserID { get; set; }
-        public FileSystem FS { get; set; }
-        public string CurrentDirectory { get; set; }
+        public int UserID { get; set; } // текущий пользователь
+        public FileSystem FS { get; set; } // состояние файловой системы
+        public string CurrentDirectory { get; set; } // текущая директория
 
+        // собственно реализации команд
         // Navigation
         public void PWD()
         {

@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/*
+ * File.cs - класс файла
+ * 
+ */
+
 namespace Task2_Authorization
 {
     using OuterFile = System.IO.File;
 
     class Program
     {
+        // чтение команды с приглашением
         static string[] ReadCommand(string invitation)
         {
             Console.Write(invitation + ">");
@@ -50,6 +56,7 @@ namespace Task2_Authorization
             return args.ToArray();
         }
 
+        // чтение и обработка команд
         static void RunSession(Session session)
         {
             bool run = true;
@@ -167,6 +174,7 @@ namespace Task2_Authorization
             }
         }
 
+        // тоже чтение и обработка команд
         static void RunFS(FileSystem fs)
         {
             bool run = true;
@@ -226,6 +234,7 @@ namespace Task2_Authorization
             }
         }
 
+        // тоже чтение и обработка команд
         static void Main(string[] args)
         {
             bool run = true;

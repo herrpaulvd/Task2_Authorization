@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Task2_Authorization
 {
+    // класс файловой системы
     class FileSystem
     {
-        public User[] Users { get; set; }
-        public File RootDirectory { get; set; }
+        public User[] Users { get; set; } // список всех пользователей
+        public File RootDirectory { get; set; } // корневая директория
 
+        // то, что создаётся командой new
         public static FileSystem MakeDefault(string username, string password)
         {
             var admin = new User { Name = username, Password = password, ID = 0 };
@@ -21,6 +23,7 @@ namespace Task2_Authorization
         private static string[] GetNamesWithoutSlashes(string path)
             => path.Split('/');
 
+        // составления пути в дереве ФС по переданному пути и пользователю, чью видимость нужно учитывать
         public List<File> GetFilesByFullName(string filename, int user)
         {
             filename = filename.Trim('/');
@@ -38,6 +41,8 @@ namespace Task2_Authorization
             return result;
         }
 
+        // составления пути в дереве ФС по переданному пути и пользователю, чью видимость нужно учитывать
+        // ГДЕ конечный файл/директория создаётся
         public List<File> GetFilesByNewFullName(string filename, int user, bool dir)
         {
             filename = filename.Trim('/');
